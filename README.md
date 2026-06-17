@@ -63,6 +63,10 @@ npx playwright install
 
 > ⚠️ **Lưu ý:** Phải đóng toàn bộ Edge trước khi chạy lệnh này
 
+```bash
+taskkill /F /IM msedge.exe
+```
+
 ### Step 2: Chạy tool
 
 ```bash
@@ -78,7 +82,7 @@ Chỉnh sửa file `config.json`:
 ```json
 {
   "inputSelector": ".public-DraftEditor-content",
-  "buttonSelector": ".btn-preview",
+  "buttonSelector": ".preview-button-wrapper button",
   "delayMs": 5000,
   "chunkSize": 1000,
   "downloadPath": "D:\\Audio\\Vbee",
@@ -154,43 +158,27 @@ Tool sẽ tự động:
 ```
 Split Text → Paste → Click Preview → Detect Audio → Download → Next Chunk
 ```
-Paste into Editor
-    ↓
-Click Preview
-    ↓
-Wait Audio Generated
-    ↓
-Extract Audio URL
-    ↓
-Download MP3
-    ↓
-Next Chunk
-⚠️ Requirements
-Node.js >= 18
-Microsoft Edge installed
-Playwright installed
-Edge phải chạy với:
---remote-debugging-port=9222
-🛠 Troubleshooting
+
+## ⚠️ Requirements
+- Node.js >= 18
+- Microsoft Edge installed
+- Playwright installed
+- Edge phải chạy với: --remote-debugging-port=9222
+
+
+## 🛠 Troubleshooting
 ❌ Cannot connect to Edge
-
-Kiểm tra:
-
-http://127.0.0.1:9222/json/version
+   Kiểm tra:
+   http://127.0.0.1:9222/json/version
 ❌ Preview button không hoạt động
-Kiểm tra selector trong config.json
-Kiểm tra text đã được select (Ctrl + A logic)
+   Kiểm tra selector trong config.json
+   Kiểm tra text đã được select (Ctrl + A logic)
 ❌ Audio không update
-Tăng delayMs
-Kiểm tra server có bị lag
-📌 Notes
-Tool dùng Edge profile thật → giữ nguyên login & cookie
-Không cần extension
-Không cần API
-Chạy hoàn toàn trên UI automation
-📈 Future Improvements
-Resume state (checkpoint)
-Parallel processing
-Auto detect selector
-Merge audio file
-Queue system
+   Tăng delayMs
+   Kiểm tra server có bị lag
+   
+## 📌 Notes
+- Tool dùng Edge profile thật → giữ nguyên login & cookie
+- Không cần extension
+- Không cần API
+- Chạy hoàn toàn trên UI automation
