@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "playwright": "^1.61.0"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  },
+  "bin": "index.js"
+}

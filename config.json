@@ -1,0 +1,13 @@
+{
+  "inputSelector": ".public-DraftEditor-content",
+  "buttonSelector": ".preview-button-wrapper button",
+  "delayMs": 3000,
+  "chunkSize": 1000,
+  "downloadPath": "D:\\Audio\\Vbee",
+  "filePrefix": "audio_",
+  "waitAudioTimeout": 90000,
+  "delayBetweenChunks": 2000,
+  "startIndex": 1,
+  "text": "Đây là đoạn văn rất dài...",
+  "inputFile": "./input.txt"
+}
