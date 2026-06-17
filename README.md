@@ -11,19 +11,6 @@ Tải file mp3 về máy
 Retry khi server bị treo
 Refresh page và tiếp tục xử lý
 Hỗ trợ resume theo vòng chạy hiện tại (runtime state)
-📁 Project Structure
-audio-tool/
-│
-├── src/
-│ ├── index.js
-│ ├── textSplitter.js
-│ └── processChunk.js
-│
-├── config.json
-├── input.txt
-├── package.json
-├── package-lock.json
-└── downloads/
 ⚙️ Setup
 
 1. Install dependencies
