@@ -61,6 +61,9 @@ npx playwright install
 --profile-directory="Profile 2"
 ```
 
+> ⚠️ **Cách check profile cần mở lên :**: Mở Profile edge và truy cập "edge://version/" và check Profile Path
+<img src="guideshoot.png" width="100%">
+
 > ⚠️ **Lưu ý:** Phải đóng toàn bộ Edge trước khi chạy lệnh này
 
 ```bash
