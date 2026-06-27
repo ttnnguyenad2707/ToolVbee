@@ -59,6 +59,9 @@ npx playwright install
 "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --remote-debugging-port=9222 --profile-directory="Profile 2"
 ```
 
+> ⚠️ **Cách check profile cần mở lên :**: Mở Profile edge và truy cập "edge://version/" và check Profile Path
+<img src="guideshoot.png" width="100%">
+
 > ⚠️ **Lưu ý:** Phải đóng toàn bộ Edge trước khi chạy lệnh này
 
 ```bash
@@ -88,7 +91,7 @@ Chỉnh sửa file `config.json`:
   "waitAudioTimeout": 90000,
   "delayBetweenChunks": 2000,
   "startIndex": 1,
-  "text": "..."
+  "inputFile": "./input.txt"
 }
 ```
 
@@ -114,14 +117,7 @@ Sử dụng file `input.txt`:
 
 ```txt
 Nội dung text cần chuyển thành audio...
-```
 
-### Option 2: Nhúng trực tiếp trong config.json
-
-```json
-{
-  "text": "Nội dung text cần chuyển thành audio..."
-}
 ```
 
 ---
