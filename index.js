@@ -147,6 +147,27 @@ async function main() {
 
     const page = context.pages()[0];
 
+    await page.goto("https://studio.vbee.vn/studio/text-to-speech");
+
+    await sleep(2000);
+
+
+    const closeIcon = page.locator(
+        '.close-button svg[data-testid="CloseIcon"]',
+    );
+
+    if (await closeIcon.count()) {
+        await closeIcon.click();
+    }
+
+    const restoreSessionBtn = page.locator(
+        'button[data-id="not-reload-prev-session"]',
+    );
+
+    if (await restoreSessionBtn.count()) {
+        await restoreSessionBtn.click();
+    }
+
     const chunks = splitText(text, config.chunkSize);
 
     console.log("Total chunks:", chunks.length);
@@ -165,6 +186,24 @@ async function main() {
                 await page.reload();
 
                 await page.waitForLoadState();
+
+                await sleep(2000);
+
+                const closeIcon = page.locator(
+                    '.close-button svg[data-testid="CloseIcon"]',
+                );
+
+                if (await closeIcon.count()) {
+                    await closeIcon.click();
+                }
+
+                const restoreSessionBtn = page.locator(
+                    'button[data-id="not-reload-prev-session"]',
+                );
+
+                if (await restoreSessionBtn.count()) {
+                    await restoreSessionBtn.click();
+                }
 
                 await sleep(3000);
             }

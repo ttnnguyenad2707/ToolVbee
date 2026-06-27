@@ -56,9 +56,7 @@ npx playwright install
 ### Step 1: Mở Edge với remote debugging
 
 ```bash
-"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" ^
---remote-debugging-port=9222 ^
---profile-directory="Profile 2"
+"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --remote-debugging-port=9222 --profile-directory="Profile 2"
 ```
 
 > ⚠️ **Lưu ý:** Phải đóng toàn bộ Edge trước khi chạy lệnh này
