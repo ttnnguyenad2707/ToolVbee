@@ -9,5 +9,6 @@
   "delayBetweenChunks": 2000,
   "startIndex": 1,
   "text": "Đây là đoạn văn rất dài...",
-  "inputFile": "./input.txt"
+  "inputFile": "./input.txt",
+  "voiceName": "Tôi tùng đây v2"
 }

@@ -135,6 +135,74 @@ async function processChunk(page, text, index) {
     );
 }
 
+async function handleBeforeTTS(page) {
+    await sleep(2000);
+
+    const closeIconRank = page.locator(
+        '.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm button',
+    );
+
+    if (await closeIconRank.count()) {
+        await closeIconRank.click();
+    }
+
+    await sleep(1000);
+
+    const closeIcon = page.locator(
+        '.close-button svg[data-testid="CloseIcon"]',
+    );
+
+    if (await closeIcon.count()) {
+        await closeIcon.click();
+    }
+
+    await sleep(1000);
+
+    const restoreSessionBtn = page.locator(
+        'button[data-id="not-reload-prev-session"]',
+    );
+
+    if (await restoreSessionBtn.count()) {
+        await restoreSessionBtn.click();
+    }
+
+    await sleep(1000);
+
+    const selectVoiceButton = page.locator('button[data-id="open-voice-list"]');
+    if (await selectVoiceButton.count()) {
+        await selectVoiceButton.click();
+    }
+
+    await sleep(1000);
+
+    const selectTabFavorite = page
+        .locator(".dialog-title")
+        .getByText("Giọng yêu thích", { exact: true });
+
+    if (await selectTabFavorite.count()) {
+        await selectTabFavorite.click();
+    }
+
+    await sleep(1000);
+    await selectVoice(page);
+    await sleep(1000);
+
+}
+
+async function selectVoice(page) {
+    const voice = page
+        .locator(".voice-list-container-result .sc-bBHxTw")
+        .filter({
+            has: page.getByText(config.voiceName, { exact: true }),
+        });
+
+    await voice
+        .getByRole("button", {
+            name: "Sử dụng",
+        })
+        .click();
+}
+
 async function main() {
     const browser = await chromium.connectOverCDP("http://127.0.0.1:9222");
     if (!fs.existsSync(config.downloadPath)) {
@@ -149,24 +217,7 @@ async function main() {
 
     await page.goto("https://studio.vbee.vn/studio/text-to-speech");
 
-    await sleep(2000);
-
-
-    const closeIcon = page.locator(
-        '.close-button svg[data-testid="CloseIcon"]',
-    );
-
-    if (await closeIcon.count()) {
-        await closeIcon.click();
-    }
-
-    const restoreSessionBtn = page.locator(
-        'button[data-id="not-reload-prev-session"]',
-    );
-
-    if (await restoreSessionBtn.count()) {
-        await restoreSessionBtn.click();
-    }
+    await handleBeforeTTS(page);
 
     const chunks = splitText(text, config.chunkSize);
 
@@ -187,23 +238,7 @@ async function main() {
 
                 await page.waitForLoadState();
 
-                await sleep(2000);
-
-                const closeIcon = page.locator(
-                    '.close-button svg[data-testid="CloseIcon"]',
-                );
-
-                if (await closeIcon.count()) {
-                    await closeIcon.click();
-                }
-
-                const restoreSessionBtn = page.locator(
-                    'button[data-id="not-reload-prev-session"]',
-                );
-
-                if (await restoreSessionBtn.count()) {
-                    await restoreSessionBtn.click();
-                }
+                await handleBeforeTTS(page);
 
                 await sleep(3000);
             }
